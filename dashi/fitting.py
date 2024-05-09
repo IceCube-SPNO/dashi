@@ -26,7 +26,7 @@ class model(object):
         :params integral_callable: a function P(X < x)
         """
         self.dfunc = callable
-        argspec = inspect.getargspec(callable)
+        argspec = inspect.getfullargspec(callable)
         self.func = integral_callable
 
         # initialize params with 1 which is a better starting value than zero for factors

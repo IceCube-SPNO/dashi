@@ -24,8 +24,8 @@ for i,name in enumerate(["typeA", "typeB", "typeC"]):
         arr["y"] = n.arange(100, 0, -1, dtype=int)
 
         fname = "%s_%d.h5" % (name,j)
-        f = tables.openFile(fname, "a")
-        f.createTable("/", "test", arr)
+        f = tables.open_file(fname, "a")
+        f.create_table("/", "test", arr)
         f.close()
 
         datafiles[name].append(fname)

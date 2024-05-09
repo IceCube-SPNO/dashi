@@ -68,7 +68,7 @@ def read_hdf(h5file, selection):
                 readorder.insert(0, (varname, [] ))
                 #print "insert", varname
             elif callable(cfg):
-                args = inspect.getargspec(cfg).args
+                args = inspect.getfullargspec(cfg).args
                 if args == ["file"]:
                     # pass h5file, calculation doesn't depend on anything
                     readorder.insert(0, (varname, []) )
@@ -99,7 +99,7 @@ def read_hdf(h5file, selection):
             else:
                 arrays[varname] = h5file.get_node(cfg).read()
         elif callable(cfg):
-            args = inspect.getargspec(cfg).args
+            args = inspect.getfullargspec(cfg).args
             if args == ["file"]:
                 arrays[varname] = cfg(h5file)
             else:
